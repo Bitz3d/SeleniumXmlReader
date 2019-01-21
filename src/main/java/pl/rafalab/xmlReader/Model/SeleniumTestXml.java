@@ -6,7 +6,7 @@ import java.util.Map;
 public class SeleniumTestXml {
 
 	String name;
-	Map<String, Integer> counters;
+	Map<String, String> counters;
 	List<Suite> suiteList;
 
 	public String getName() {
@@ -17,11 +17,11 @@ public class SeleniumTestXml {
 		this.name = name;
 	}
 
-	public Map<String, Integer> getCounters() {
+	public Map<String, String> getCounters() {
 		return counters;
 	}
 
-	public void setCounters(Map<String, Integer> counters) {
+	public void setCounters(Map<String, String> counters) {
 		this.counters = counters;
 	}
 

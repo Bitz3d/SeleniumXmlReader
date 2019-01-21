@@ -1,20 +1,19 @@
 package pl.rafalab.xmlReader.Model;
 
-import java.util.List;
 import java.util.Map;
 
-public class Suite {
+public class TestCase {
 
-	Long duration;
+	String duration;
 	String locationUrl;
 	String name;
 	String status;
-	List<TestCase> tastCaseList;
+	Map<String, String> output;
 	
-	public Long getDuration() {
+	public String getDuration() {
 		return duration;
 	}
-	public void setDuration(Long duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	public String getLocationUrl() {
@@ -35,13 +34,14 @@ public class Suite {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public List<TestCase> getTastCaseList() {
-		return tastCaseList;
+	public Map<String, String> getOutput() {
+		return output;
 	}
-	public void setTastCaseList(List<TestCase> tastCaseList) {
-		this.tastCaseList = tastCaseList;
+	public void setOutput(Map<String, String> output) {
+		this.output = output;
 	}
-
+	
+	
 	
 	
 }
