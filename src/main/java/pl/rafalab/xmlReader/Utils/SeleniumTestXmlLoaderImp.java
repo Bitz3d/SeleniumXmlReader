@@ -15,6 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import pl.rafalab.xmlReader.Model.SeleniumTestXml;
+import pl.rafalab.xmlReader.Model.Suite;
 
 public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 
@@ -63,6 +64,14 @@ public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 			}	
 		}
 		return dountersData;
+		
+	}
+	
+	private List<Suite> getSuites(NodeList suiteList){
+		List<Suite> suitesData = new ArrayList<>();
+		//TODO
+
+		return suitesData;
 		
 	}
 

@@ -1,7 +1,6 @@
 package pl.rafalab.xmlReader.Model;
 
 import java.util.List;
-import java.util.Map;
 
 public class Suite {
 
