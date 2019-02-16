@@ -3,14 +3,15 @@ package pl.rafalab.xmlReader.Model;
 import lombok.Data;
 
 @Data
-public class Suite {
+public class Test {
     private String duration;
 
-    private String locationUrl;
+    private Output output;
 
-    private Test[] test;
+    private String locationUrl;
 
     private String name;
 
     private String status;
+
 }
