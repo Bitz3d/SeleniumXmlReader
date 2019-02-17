@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class XmlSeleniumTest {
+
     private Testrun testrun;
 
     public Testrun getTestrun() {

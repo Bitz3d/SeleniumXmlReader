@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 @Controller
 public class HomeController {
 
@@ -11,6 +13,8 @@ public class HomeController {
 	@ResponseBody
 	public String getHome(){
 
-		return "siema from xml reader, Michał jest paker";
+		Date date = new Date();
+
+		return "Working "+date.toString();
 	}
 }

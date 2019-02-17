@@ -1,10 +1,9 @@
-//package pl.rafalab.xmlReader.Utils;
-//
-//import java.io.File;
-//import java.util.List;
-//
-//public interface SeleniumTestXmlLoader {
-//
-//	public List<SeleniumTestXml> getSeleniumTest(File file);
-//
-//}
+package pl.rafalab.xmlReader.Utils;
+
+import pl.rafalab.xmlReader.Model.Testrun;
+
+public interface SeleniumTestXmlLoader {
+
+	public Testrun getSeleniumTest();
+
+}
