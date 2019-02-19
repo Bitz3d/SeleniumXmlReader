@@ -12,9 +12,7 @@ public class HomeController {
 	@GetMapping("/")
 	@ResponseBody
 	public String getHome(){
-
 		Date date = new Date();
-
-		return "Working "+date.toString();
+		return "Server is working - "+date.toString();
 	}
 }
