@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.rafalab.xmlReader.Model.Testrun;
-import pl.rafalab.xmlReader.Utils.Interfaces.FilesWorker;
+import pl.rafalab.xmlReader.Utils.FilesWorkerImp;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import java.util.List;
 @RequestMapping("/api/")
 public class FileController {
 
-    private FilesWorker filesWorker;
+    private FilesWorkerImp filesWorker;
 
     @Autowired
-    public FileController(FilesWorker filesWorker) {
+    public FileController(FilesWorkerImp filesWorker) {
         this.filesWorker = filesWorker;
     }
 
