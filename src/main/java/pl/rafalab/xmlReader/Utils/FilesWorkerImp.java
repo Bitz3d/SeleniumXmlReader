@@ -20,9 +20,6 @@ public class FilesWorkerImp implements FilesWorker {
     @Value("${file.location}")
     private String path;
 
-    @Autowired
-    SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
-
     @Override
     public void saveFileInDirectory(MultipartFile multipartFile) throws IOException {
         File desktop = new File(path);
@@ -35,6 +32,7 @@ public class FilesWorkerImp implements FilesWorker {
 
     @Override
     public List<Testrun> allXMLFiles() {
+        SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp = new SeleniumTestXmlLoaderImp();
         List<Testrun> allXmlList = new ArrayList<>();
         File file = new File(path);
         Arrays.asList(file.listFiles()).forEach(file1 -> allXmlList.add(seleniumTestXmlLoaderImp.getSeleniumTest(file1)));
