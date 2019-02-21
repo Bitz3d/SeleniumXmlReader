@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.rafalab.xmlReader.Utils.SaveFileImp;
+import pl.rafalab.xmlReader.Utils.FilesWorkerImp;
 import pl.rafalab.xmlReader.Utils.SeleniumTestXmlLoaderImp;
 
 import java.io.File;
@@ -20,35 +20,31 @@ public class UpladController {
 
     private SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
     private MessageSource messageSource;
-    private SaveFileImp saveFileImp;
+    private FilesWorkerImp saveFileImp;
 
     @Autowired
-    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,SaveFileImp saveFileImp) {
+    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,FilesWorkerImp saveFileImp) {
         this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
         this.messageSource = messageSource;
         this.saveFileImp = saveFileImp;
     }
 
-    @GetMapping("hello")
-    ResponseEntity<String> hello() {
-        return new ResponseEntity<>("Hello World!", HttpStatus.OK);
-    }
-
     @PostMapping("upload")
-    ResponseEntity<String> upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+    ResponseEntity<String> hello(@RequestParam("file") MultipartFile multipartFile) throws IOException  {
         Locale locale = Locale.getDefault();
-        if(multipartFile == null && !multipartFile.getName().contains(".xml")){
+        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
             return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
         }
-        File file = new File(multipartFile.getOriginalFilename());
-        multipartFile.transferTo(file);
-        return new ResponseEntity<>("upload done", HttpStatus.OK);
-    }
-
-    @PostMapping("test")
-    ResponseEntity<String> test(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        System.out.println(multipartFile.getOriginalFilename());
         saveFileImp.saveFileInDirectory(multipartFile);
         return new ResponseEntity<>("Hello World!", HttpStatus.OK);
     }
 
+    @PostMapping("check")
+    ResponseEntity<String> upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        File file = new File(multipartFile.getOriginalFilename());
+        multipartFile.transferTo(file);
+        return new ResponseEntity<>("upload done", HttpStatus.OK);
+    }
 }
