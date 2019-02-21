@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.rafalab.xmlReader.Utils.SaveFileImp;
+import pl.rafalab.xmlReader.Utils.FilesWorkerImp;
 import pl.rafalab.xmlReader.Utils.SeleniumTestXmlLoaderImp;
 
 import java.io.File;
@@ -20,10 +20,10 @@ public class UpladController {
 
     private SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
     private MessageSource messageSource;
-    private SaveFileImp saveFileImp;
+    private FilesWorkerImp saveFileImp;
 
     @Autowired
-    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,SaveFileImp saveFileImp) {
+    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,FilesWorkerImp saveFileImp) {
         this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
         this.messageSource = messageSource;
         this.saveFileImp = saveFileImp;
