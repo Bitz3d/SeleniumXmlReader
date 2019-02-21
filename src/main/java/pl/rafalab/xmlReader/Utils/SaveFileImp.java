@@ -21,7 +21,6 @@ public class SaveFileImp implements SaveFile {
         if (!desktop.exists()) {
             desktop.mkdir();
         }
-        System.out.println(multipartFile.getOriginalFilename());
         File saveFile = new File(path+"/"+multipartFile.getOriginalFilename());
         multipartFile.transferTo(saveFile);
     }
