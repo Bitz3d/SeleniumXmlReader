@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.rafalab.xmlReader.Utils.SaveFileImp;
 import pl.rafalab.xmlReader.Utils.SeleniumTestXmlLoaderImp;
 
 import java.io.File;
@@ -19,11 +20,13 @@ public class UpladController {
 
     private SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
     private MessageSource messageSource;
+    private SaveFileImp saveFileImp;
 
     @Autowired
-    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource) {
+    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,SaveFileImp saveFileImp) {
         this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
         this.messageSource = messageSource;
+        this.saveFileImp = saveFileImp;
     }
 
     @GetMapping("hello")
@@ -40,6 +43,12 @@ public class UpladController {
         File file = new File(multipartFile.getOriginalFilename());
         multipartFile.transferTo(file);
         return new ResponseEntity<>("upload done", HttpStatus.OK);
+    }
+
+    @PostMapping("test")
+    ResponseEntity<String> test(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        saveFileImp.saveFileInDirectory(multipartFile);
+        return new ResponseEntity<>("Hello World!", HttpStatus.OK);
     }
 
 }
