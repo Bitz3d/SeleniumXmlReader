@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import java.io.File;
 
 @Component
+@Log4j
 public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 
 
@@ -21,6 +22,7 @@ public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
             JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             testrun = (Testrun) unmarshaller.unmarshal(file);
+            log.info("Przetwarzamy plik - " + file.getName());
 
         } catch (JAXBException e) {
             e.printStackTrace();
