@@ -3,6 +3,7 @@ package pl.rafalab.xmlReader.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.rafalab.xmlReader.Model.Testrun;
 import pl.rafalab.xmlReader.Utils.Interfaces.FilesWorker;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+@Service
 public class FilesWorkerImp implements FilesWorker {
 
     @Value("${file.location}")
