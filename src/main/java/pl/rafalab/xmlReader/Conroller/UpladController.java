@@ -22,19 +22,21 @@ public class UpladController {
     private MessageSource messageSource;
     private FilesWorkerImp saveFileImp;
 
-    @Autowired
-    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,FilesWorkerImp saveFileImp) {
-        this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
-        this.messageSource = messageSource;
-        this.saveFileImp = saveFileImp;
-    }
+//    @Autowired
+//    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,FilesWorkerImp saveFileImp) {
+//        this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
+//        this.messageSource = messageSource;
+//        this.saveFileImp = saveFileImp;
+//    }
 
     @PostMapping("upload")
     ResponseEntity<String> hello(@RequestParam("file") MultipartFile multipartFile) throws IOException  {
         Locale locale = Locale.getDefault();
-        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
-            return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
-        }
+        saveFileImp = new FilesWorkerImp();
+//
+//        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
+//            return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
+//        }
         System.out.println(multipartFile.getOriginalFilename());
         saveFileImp.saveFileInDirectory(multipartFile);
         return new ResponseEntity<>("Hello World!", HttpStatus.OK);

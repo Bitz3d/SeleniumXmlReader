@@ -18,7 +18,7 @@ public class FileController {
 
     @GetMapping("all/files")
     ResponseEntity<List<Testrun>> getAllFiles(){
-         FilesWorkerImp filesWorker = new FilesWorkerImp(new SeleniumTestXmlLoaderImp());
+         FilesWorkerImp filesWorker = new FilesWorkerImp();
         return new ResponseEntity<>(filesWorker.allXMLFiles(),HttpStatus.OK);
     }
 }

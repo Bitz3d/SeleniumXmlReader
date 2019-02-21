@@ -20,12 +20,8 @@ public class FilesWorkerImp implements FilesWorker {
     @Value("${file.location}")
     private String path;
 
-    SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
-
     @Autowired
-    public FilesWorkerImp(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp) {
-        this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
-    }
+    SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
 
     @Override
     public void saveFileInDirectory(MultipartFile multipartFile) throws IOException {
