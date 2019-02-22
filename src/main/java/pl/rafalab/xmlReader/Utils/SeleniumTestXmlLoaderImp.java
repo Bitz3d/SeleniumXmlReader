@@ -13,19 +13,9 @@ import java.io.File;
 @Log4j
 public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 
-
     @Override
-    public Testrun getSeleniumTest(File file) {
-        Testrun testrun = new Testrun();
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            testrun = (Testrun) unmarshaller.unmarshal(file);
-            log.info("Przetwarzamy plik - " + file.getName());
+    public String getSeleniumTest(File file) {
 
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-        return testrun;
+        return "sss";
     }
 }

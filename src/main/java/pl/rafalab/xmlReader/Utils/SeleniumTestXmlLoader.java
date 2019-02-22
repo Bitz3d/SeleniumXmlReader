@@ -7,5 +7,5 @@ import java.io.File;
 
 @Service
 public interface SeleniumTestXmlLoader {
-    public Testrun getSeleniumTest(File file);
+    public String getSeleniumTest(File file);
 }
