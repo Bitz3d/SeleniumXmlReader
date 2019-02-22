@@ -1,4 +1,4 @@
-package pl.rafalab.xmlReader.Utils.Interfaces;
+package pl.rafalab.xmlReader.Utils;
 
 import org.springframework.stereotype.Component;
 import pl.rafalab.xmlReader.Model.Testrun;

@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/")
 public class FileController {
 
-    FilesWorkerImp filesWorker;
+    private FilesWorkerImp filesWorker;
 
     @Autowired
     public FileController(FilesWorkerImp filesWorker) {
