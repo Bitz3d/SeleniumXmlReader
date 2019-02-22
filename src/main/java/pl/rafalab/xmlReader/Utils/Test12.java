@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
-public class Test12 {
+public class Test12 implements ITest12 {
 
     public String siema(){
 
