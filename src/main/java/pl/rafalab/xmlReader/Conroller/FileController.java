@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.rafalab.xmlReader.Model.Test;
 import pl.rafalab.xmlReader.Model.Testrun;
 
 import java.util.List;
@@ -14,6 +15,13 @@ import java.util.List;
 @RequestMapping("/api/")
 public class FileController {
 
+
+    Test test;
+
+    @Autowired
+    public FileController(Test test) {
+        this.test = test;
+    }
 
     @GetMapping("all/files")
     ResponseEntity<String> getAllFiles(){
