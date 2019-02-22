@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 public class FileController {
 
-
-
     @GetMapping("all/files")
     ResponseEntity<String> getAllFiles(){
 
