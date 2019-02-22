@@ -1,9 +1,12 @@
 package pl.rafalab.xmlReader.Model;
 
+import org.springframework.stereotype.Component;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Component
 public class Testrun
 {
 
