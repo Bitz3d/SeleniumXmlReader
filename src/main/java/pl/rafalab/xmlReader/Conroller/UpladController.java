@@ -18,25 +18,22 @@ import java.util.Locale;
 @RequestMapping("/api/")
 public class UpladController {
 
-    private SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
     private MessageSource messageSource;
     private FilesWorkerImp saveFileImp;
 
-//    @Autowired
-//    public UpladController(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp, MessageSource messageSource,FilesWorkerImp saveFileImp) {
-//        this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
-//        this.messageSource = messageSource;
-//        this.saveFileImp = saveFileImp;
-//    }
+    @Autowired
+    public UpladController(MessageSource messageSource,FilesWorkerImp saveFileImp) {
+        this.messageSource = messageSource;
+        this.saveFileImp = saveFileImp;
+    }
 
     @PostMapping("upload")
     ResponseEntity<String> hello(@RequestParam("file") MultipartFile multipartFile) throws IOException  {
         Locale locale = Locale.getDefault();
-        saveFileImp = new FilesWorkerImp();
-//
-//        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
-//            return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
-//        }
+
+        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
+            return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
+        }
         System.out.println(multipartFile.getOriginalFilename());
         saveFileImp.saveFileInDirectory(multipartFile);
         return new ResponseEntity<>("Hello World!", HttpStatus.OK);
@@ -44,7 +41,6 @@ public class UpladController {
 
     @PostMapping("check")
     ResponseEntity<String> upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
-
         File file = new File(multipartFile.getOriginalFilename());
         multipartFile.transferTo(file);
         return new ResponseEntity<>("upload done", HttpStatus.OK);

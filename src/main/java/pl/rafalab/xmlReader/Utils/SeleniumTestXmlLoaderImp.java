@@ -1,7 +1,6 @@
 package pl.rafalab.xmlReader.Utils;
 
 import lombok.extern.log4j.Log4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import pl.rafalab.xmlReader.Model.Testrun;
 import pl.rafalab.xmlReader.Utils.Interfaces.SeleniumTestXmlLoader;
