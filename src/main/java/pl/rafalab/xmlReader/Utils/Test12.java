@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
-public class Test {
-
+public class Test12 {
 
     public String siema(){
+
         return "siema from Test";
     }
 
