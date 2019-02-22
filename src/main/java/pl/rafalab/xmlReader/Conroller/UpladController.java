@@ -6,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.rafalab.xmlReader.Utils.FilesWorkerImp;
-import pl.rafalab.xmlReader.Utils.SeleniumTestXmlLoaderImp;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,24 +16,10 @@ import java.util.Locale;
 @RequestMapping("/api/")
 public class UpladController {
 
-    private MessageSource messageSource;
-    private FilesWorkerImp saveFileImp;
-
-    @Autowired
-    public UpladController(MessageSource messageSource,FilesWorkerImp saveFileImp) {
-        this.messageSource = messageSource;
-        this.saveFileImp = saveFileImp;
-    }
 
     @PostMapping("upload")
     ResponseEntity<String> hello(@RequestParam("file") MultipartFile multipartFile) throws IOException  {
-        Locale locale = Locale.getDefault();
 
-        if(multipartFile == null || !multipartFile.getOriginalFilename().contains(".xml")){
-            return new ResponseEntity<>(messageSource.getMessage("empty.file", null, locale),HttpStatus.BAD_REQUEST);
-        }
-        System.out.println(multipartFile.getOriginalFilename());
-        saveFileImp.saveFileInDirectory(multipartFile);
         return new ResponseEntity<>("Hello World!", HttpStatus.OK);
     }
 
