@@ -7,10 +7,9 @@ import pl.rafalab.xmlReader.Model.Testrun;
 import java.io.IOException;
 import java.util.List;
 
-@Service
 public interface FileWorker {
 
     public void saveFileInDirectory(MultipartFile multipartFile) throws IOException;
-    public List<Testrun> allXMLFiles();
+    public List<String> allXMLFiles();
 
 }

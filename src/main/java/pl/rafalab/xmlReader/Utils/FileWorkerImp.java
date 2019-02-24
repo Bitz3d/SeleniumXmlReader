@@ -15,14 +15,13 @@ import java.util.List;
 @Component
 public class FileWorkerImp implements FileWorker {
 
-//    @Value("${file.location}")
-//    private String path;
-    private String path ="/home/ubuntu/xmlFiles";
+    @Value("${file.location}")
+    private String path;
 
     SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
 
     @Autowired
-    public FileWorkerImp(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp) {
+    public FileWorkerImp(@ Autowired SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp) {
         this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
     }
 
@@ -37,10 +36,10 @@ public class FileWorkerImp implements FileWorker {
     }
 
     @Override
-    public List<Testrun> allXMLFiles() {
-        List<Testrun> allXmlList = new ArrayList<>();
+    public List<String> allXMLFiles() {
+        List<String> allXmlList = new ArrayList<>();
         File file = new File(path);
-        Arrays.asList(file.listFiles()).forEach(file1 -> allXmlList.add(seleniumTestXmlLoaderImp.getSeleniumTest(file1)));
+        //Arrays.asList(file.listFiles()).forEach(file1 -> allXmlList.add(seleniumTestXmlLoaderImp.getSeleniumTest(file1)));
         return allXmlList;
     }
 }

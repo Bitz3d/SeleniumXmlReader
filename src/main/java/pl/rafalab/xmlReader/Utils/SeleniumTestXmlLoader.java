@@ -5,7 +5,6 @@ import pl.rafalab.xmlReader.Model.Testrun;
 
 import java.io.File;
 
-@Service
 public interface SeleniumTestXmlLoader {
     public Testrun getSeleniumTest(File file);
 }
