@@ -24,7 +24,6 @@ public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 
     @Override
     public Testrun getSeleniumTest(File file) {
-        Testrun testrun = new Testrun();
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
