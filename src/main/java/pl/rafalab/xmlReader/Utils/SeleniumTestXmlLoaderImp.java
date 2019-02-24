@@ -1,7 +1,9 @@
 package pl.rafalab.xmlReader.Utils;
 
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.rafalab.xmlReader.Model.Test;
 import pl.rafalab.xmlReader.Model.Testrun;
 
 import javax.xml.bind.JAXBContext;
@@ -12,6 +14,13 @@ import java.io.File;
 @Component
 @Log4j
 public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
+
+    Testrun testrun;
+
+    @Autowired
+    public SeleniumTestXmlLoaderImp(Testrun testrun) {
+        this.testrun = testrun;
+    }
 
     @Override
     public String getSeleniumTest(File file) {
