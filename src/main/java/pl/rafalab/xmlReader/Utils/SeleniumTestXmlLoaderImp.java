@@ -23,8 +23,17 @@ public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
     }
 
     @Override
-    public String getSeleniumTest(File file) {
+    public Testrun getSeleniumTest(File file) {
+        Testrun testrun = new Testrun();
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            testrun = (Testrun) unmarshaller.unmarshal(file);
+            log.info("Przetwarzamy plik - " + file.getName());
 
-        return "sss";
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return testrun;
     }
 }

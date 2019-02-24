@@ -15,14 +15,31 @@ import java.util.List;
 @Component
 public class FileWorkerImp implements FileWorker {
 
+    @Value("${file.location}")
+    private String path;
+
+    SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
+
+    @Autowired
+    public FileWorkerImp(SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp) {
+        this.seleniumTestXmlLoaderImp = seleniumTestXmlLoaderImp;
+    }
 
     @Override
     public void saveFileInDirectory(MultipartFile multipartFile) throws IOException {
-
+        File desktop = new File(path);
+        if (!desktop.exists()) {
+            desktop.mkdir();
+        }
+        File saveFile = new File(path + File.separator + multipartFile.getOriginalFilename());
+        multipartFile.transferTo(saveFile);
     }
 
     @Override
     public List<Testrun> allXMLFiles() {
-        return null;
+        List<Testrun> allXmlList = new ArrayList<>();
+        File file = new File(path);
+        Arrays.asList(file.listFiles()).forEach(file1 -> allXmlList.add(seleniumTestXmlLoaderImp.getSeleniumTest(file1)));
+        return allXmlList;
     }
 }
