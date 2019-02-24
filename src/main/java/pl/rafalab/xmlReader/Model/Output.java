@@ -1,8 +1,11 @@
 package pl.rafalab.xmlReader.Model;
 
 
+import org.springframework.stereotype.Component;
+
 import javax.xml.bind.annotation.XmlAttribute;
 
+@Component
 public class Output {
     private String type;
 
