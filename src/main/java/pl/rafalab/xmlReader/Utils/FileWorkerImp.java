@@ -15,8 +15,9 @@ import java.util.List;
 @Component
 public class FileWorkerImp implements FileWorker {
 
-    @Value("${file.location}")
-    private String path;
+//    @Value("${file.location}")
+//    private String path;
+    private String path ="/home/ubuntu/xmlFiles";
 
     SeleniumTestXmlLoaderImp seleniumTestXmlLoaderImp;
 
