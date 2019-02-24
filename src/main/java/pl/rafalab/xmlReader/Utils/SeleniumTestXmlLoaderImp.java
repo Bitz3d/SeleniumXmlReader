@@ -15,24 +15,17 @@ import java.io.File;
 @Log4j
 public class SeleniumTestXmlLoaderImp implements SeleniumTestXmlLoader {
 
-    Testrun testrun;
-
-    @Autowired
-    public SeleniumTestXmlLoaderImp(Testrun testrun) {
-        this.testrun = testrun;
-    }
-
     @Override
     public String getSeleniumTest(File file) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
-            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            //testrun = (Testrun) unmarshaller.unmarshal(file);
-            log.info("Przetwarzamy plik - " + file.getName());
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            JAXBContext jaxbContext = JAXBContext.newInstance(Testrun.class);
+////            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+////            //testrun = (Testrun) unmarshaller.unmarshal(file);
+////            log.info("Przetwarzamy plik - " + file.getName());
+//
+//        } catch (JAXBException e) {
+//            e.printStackTrace();
+//        }
         return "sd";
     }
 }
